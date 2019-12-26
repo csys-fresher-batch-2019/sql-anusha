@@ -3,7 +3,7 @@ task_number number,
 task varchar2(50)not null,
 by_name varchar2(25) not null,
 deadline_date date not null,
-completed_date date
+completed_date date,
 status number not null,
 );
 
@@ -17,4 +17,4 @@ values(task_number.nextval,'Install_chrome','abc',to_date('01/01/2020','dd/MM/yy
                                                                      
 update todo set status=1 where comp_date != null;
 update todo set status=0 where comp_date = null;
-select *from todo where status = 1;
+select *from todo;
