@@ -1,4 +1,4 @@
---drop table order_items;
+drop table order_items;
 drop table orders;
 drop table books;
 
@@ -60,18 +60,6 @@ insert into orders (order_id, customer_id, total_amount, status)values (3,2,120,
 
 insert into orders (order_id, customer_id, total_amount, status)values (4,3,120,'PENDING');
 
-insert into orders (order_id, customer_id, total_amount, status)values (5,4,120,'PENDING');
-
-insert into orders (order_id, customer_id, total_amount, status)values (6,5,120,'PENDING');
-
-insert into orders (order_id, customer_id, total_amount, status)values (7,5,120,'PENDING');
-
-insert into orders (order_id, customer_id, total_amount, status)values (8,6,120,'PENDING');
-
-insert into orders (order_id, customer_id, total_amount, status)values (9,7,120,'PENDING');
-
-insert into orders (order_id, customer_id, total_amount, status)values (10,8,120,'PENDING');
-
 create table order_items(
     item_id number not null,
     order_id number not null,
@@ -82,6 +70,23 @@ create table order_items(
 
 insert into order_items (item_id, order_id, quantity, status)values(1, 1, 3, 'PENDING');
 
+insert into order_items (item_id, order_id, quantity, status)values(1, 2, 2, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 2, 4, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 3, 5, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 4, 6, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 1, 1, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 4, 3, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 3, 2, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 1, 4, 'PENDING');
+
+insert into order_items (item_id, order_id, quantity, status)values(1, 3, 3, 'PENDING');
 
 /*create table stock(
     stock_number number not null,
