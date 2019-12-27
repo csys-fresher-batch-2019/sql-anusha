@@ -1,4 +1,6 @@
+drop table orders;
 drop table books;
+
 create table books(
     book_id number primary key,
     book_name varchar2(100) not null,
@@ -13,15 +15,12 @@ create table books(
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
 values (1,'abc','asdf',120,'ghjkl',1,'qwerty',1);
 
-
-
-drop table orders;
 create table orders(
-    order_id number not null,
+    order_id number not null primary key,
     customer_id number not null,
     book_id number,
     ordered_date timestamp default sysdate not null,
-    delivered_date timestamp default sysdate,
+    delivered_date timestamp,
     total_amount number not null check(total_amount>=0),
     quantity number not null check(quantity>=1),
     status varchar2(20) not null check(status in('PENDING','CANCELLED','NOT AVAILABLE')),
