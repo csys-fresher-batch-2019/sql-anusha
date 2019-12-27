@@ -47,17 +47,17 @@ create table orders(
     order_id number not null primary key,
     customer_id number not null,
     ordered_date timestamp default sysdate not null,
-    delivered_date date,
-    cancelled_date date,
+    delivered_date timestamp,
+    cancelled_date timestamp,
     total_amount number not null check(total_amount>=0),
     status varchar2(20) default 'PROCESSING' not null  check(status in('PROCESSING','DELIVERED','CANCELLED','NOT AVAILABLE'))
 );
 
-insert into orders (order_id, customer_id, total_amount,delivered_date)values (1,1,120,to_date('27/12/2019','dd/MM/yyyy'));
+insert into orders (order_id, customer_id, total_amount,delivered_date)values (1,1,120, systimestamp);
 
 insert into orders (order_id, customer_id, total_amount)values (2,1,120);
 
-insert into orders (order_id, customer_id, total_amount,cancelled_date)values (3,2,120,to_date('27/12/2019','dd/MM/yyyy'));
+insert into orders (order_id, customer_id, total_amount,cancelled_date)values (3,2,120,systimestamp);
 
 insert into orders (order_id, customer_id, total_amount)values (4,3,120);
 
