@@ -1,3 +1,4 @@
+--drop table order_items;
 drop table orders;
 drop table books;
 
@@ -13,66 +14,81 @@ create table books(
 );
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (1,'abc','abcd',120,'abcde',1,'qwertyuiop',0);
+values (1,'abc','abcd',100,'abcde',1,'qwertyuiop',0);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
 values (2,'abc','abcd',120,'abcde',2,'qwertyuiop',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (3,'def','efgh',120,'fghij',1,'asdfghjkl',1);
+values (3,'def','efgh',80,'fghij',1,'asdfghjkl',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (4,'ghi','ijkl',120,'klmno',1,'zxcvbnm',1);
+values (4,'ghi','ijkl',900,'klmno',1,'zxcvbnm',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (5,'jkl','mnop',120,'pqrst',1,'qwertyuiop',1);
+values (5,'jkl','mnop',60,'pqrst',1,'qwertyuiop',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (6,'mno','qrts',120,'uvwxy',1,'asdfghjkl',0);
+values (6,'mno','qrts',90,'uvwxy',1,'asdfghjkl',0);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (7,'mno','qrst',120,'uvwxy',2,'asdfghjkl',1);
+values (7,'mno','qrst',150,'uvwxy',2,'asdfghjkl',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (8,'pqr','uvwx',120,'zabcd',1,'zxcvbnm',1);
+values (8,'pqr','uvwx',125,'zabcd',1,'zxcvbnm',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (9,'stu','yzab',120,'efghi',1,'qwertyuiop',1);
+values (9,'stu','yzab',199,'efghi',1,'qwertyuiop',1);
 
 insert into books(book_id, book_name, author_name, price, publisher, version, category_b, active) 
-values (10,'vwx','cdef',120,'jklmno',1,'asdfghjkl',1);
+values (10,'vwx','cdef',209,'jklmno',1,'asdfghjkl',1);
 
 create table orders(
     order_id number not null primary key,
     customer_id number not null,
-    book_id number,
     ordered_date timestamp default sysdate not null,
     delivered_date timestamp,
     total_amount number not null check(total_amount>=0),
-    quantity number not null check(quantity>=1),
-    status varchar2(20) not null check(status in('PENDING','CANCELLED','NOT AVAILABLE')),
-    commands varchar2(200),
-    constraint book_id_fk foreign key (book_id) references books(book_id)
+    status varchar2(20) not null check(status in('PENDING','CANCELLED','NOT AVAILABLE'))
 );
 
-insert into orders (order_id, customer_id, book_id, total_amount, quantity, status)values (1,1,1,120,1,'PENDING');
+insert into orders (order_id, customer_id, total_amount, status)values (1,1,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (2,1,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (3,2,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (4,3,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (5,4,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (6,5,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (7,5,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (8,6,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (9,7,120,'PENDING');
+
+insert into orders (order_id, customer_id, total_amount, status)values (10,8,120,'PENDING');
 
 create table order_items(
-    order_no number not null,
+    item_id number not null,
     order_id number not null,
     quantity number not null, 
-    status varchar2(25) not null check(status in ('PENDING','COMPLETED','CANCELLED'))
+    status varchar2(25) not null check(status in ('PENDING','COMPLETED','CANCELLED')),
+    constraint order_id_fk foreign key (order_id) references orders
 );
 
+insert into order_items (item_id, order_id, quantity, status)
+values(1,1,3,'PENDING');
 
-
-create table stock(
+/*create table stock(
     stock_number number not null,
     book_id number not null,
     quantity number 
-);
+);*/
 
-
-
-select * from books order by category_b asc;
+select * from books;
 select * from orders;
+select * from order_items;
