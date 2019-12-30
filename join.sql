@@ -64,4 +64,12 @@ update orders set status='DELIVERED' where delivered_date is not null;
 
 update orders set status='CANCELLED' where cancelled_date is not null;
 
-select * from books b left outer join orders o on b.price=o.total_amount ;
+select * from books b join orders o on b.price=o.total_amount ;-----------JOIN-----------
+
+select * from books b left join orders o on b.price=o.total_amount ;------LEFT JOIN------
+
+select * from books b right join orders o on b.price=o.total_amount ;-----RIGHT JOIN-----
+
+select * from books b full join orders o on b.price=o.total_amount ;------FULL JOIN------ 
+
+select * from books b ,orders o;------------------------------------------CROSS JOIN-----
