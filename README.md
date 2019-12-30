@@ -10,14 +10,15 @@
 ```sql
 create table departments(
   department_id number primary key,
-  department_name varchar2(50) not null unique
+  department_name varchar2(50) not null,
+  constraint department_name_uq unique (department_name)
   );
   
 create table doctors(
   employee_id number primary key,
   doc_name varchar2(50) not null unique,
-  department_name varchar2(50),
-  foreign key (department_name) references departments(department_name)  
+  department_id number,
+  foreign key (department_id) references departments(department_id)  
   );
 ``` 
 Query:
