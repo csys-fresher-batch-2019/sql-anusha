@@ -23,4 +23,5 @@ create table doctors(
 Query:
 ```sql
   select * from departments;
+  select * from doctors;
 ```
