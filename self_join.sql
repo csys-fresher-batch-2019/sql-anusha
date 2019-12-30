@@ -4,6 +4,7 @@ create table emp(
     emp_id number not null,
     manager number
 );
+
 insert into emp (emp_id ,emp_name)
 values (1,'a');
 
