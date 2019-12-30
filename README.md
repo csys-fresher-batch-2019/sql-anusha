@@ -6,7 +6,7 @@
 
 * Users should be able to view all the departments in the hospital
 
-### Feature 1: List departments
+### Feature 1: List departments and doctors
 ```sql
 create table departments(
   department_id number primary key,
@@ -17,7 +17,7 @@ create table departments(
 create table doctors(
   employee_id number primary key,
   doc_name varchar2(50) not null,
-  department_id number,
+  department_id number not null,
   foreign key (department_id) references departments(department_id) ,
    constraint doc_name_uq unique (doc_name)
   );
