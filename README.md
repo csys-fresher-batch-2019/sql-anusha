@@ -15,5 +15,6 @@ create table departments(
 
   
 Query:
-
+---sql
   select * from departments;
+---
