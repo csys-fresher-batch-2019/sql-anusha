@@ -9,8 +9,8 @@
 ### Feature 1: List departments
 ```sql
 create table departments(
-  department_id number,
-  department_name varchar(50)
+  department_id number not null,
+  department_name varchar(50) not null
   );
 ``` 
 Query:
