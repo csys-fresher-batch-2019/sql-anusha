@@ -10,7 +10,7 @@
 ```sql
 create table departments(
   department_id number primary key,
-  department_name varchar(50) not null unique
+  department_name varchar(50) not null
   );
 ``` 
 Query:
