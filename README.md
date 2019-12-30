@@ -18,7 +18,7 @@ create table doctors(
   employee_id number primary key,
   doc_name varchar2(50) not null,
   department_id number,
-  foreign key (department_id) references departments(department_id) 
+  foreign key (department_id) references departments(department_id) ,
    constraint doc_name_uq unique (doc_name)
   );
 ``` 
