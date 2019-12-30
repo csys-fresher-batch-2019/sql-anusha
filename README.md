@@ -1,6 +1,6 @@
-# Hospital Database Management System
+# ABC Hospital Database Management System
 
-* http://hospitaldata.in
+* http://abchospitaldata.in
 
 ## Features
 
@@ -11,6 +11,13 @@
 create table departments(
   department_id number primary key,
   department_name varchar2(50) not null unique
+  );
+  
+create table doctors(
+  employee_id number primary key,
+  doc_name varchar2(50) not null unique,
+  department_name varchar2(50),
+  foreign key (department_name) references departments(department_name)  
   );
 ``` 
 Query:
