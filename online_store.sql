@@ -1,3 +1,4 @@
+drop table stock;
 drop table order_items;
 drop table orders;
 drop table books;
@@ -75,30 +76,56 @@ create table order_items(
 
 insert into order_items (item_id, order_id, quantity)values(1, 1, 3);
 
-insert into order_items (item_id, order_id, quantity)values(1, 2, 2);
+insert into order_items (item_id, order_id, quantity)values(2, 2, 2);
 
-insert into order_items (item_id, order_id, quantity)values(1, 2, 4);
+insert into order_items (item_id, order_id, quantity)values(3, 2, 4);
 
-insert into order_items (item_id, order_id, quantity)values(1, 3, 5);
+insert into order_items (item_id, order_id, quantity)values(4, 3, 5);
 
-insert into order_items (item_id, order_id, quantity)values(1, 4, 6);
+insert into order_items (item_id, order_id, quantity)values(5, 4, 6);
 
-insert into order_items (item_id, order_id, quantity)values(1, 1, 1);
+insert into order_items (item_id, order_id, quantity)values(6, 1, 1);
 
-insert into order_items (item_id, order_id, quantity)values(1, 4, 3);
+insert into order_items (item_id, order_id, quantity)values(7, 4, 3);
 
-insert into order_items (item_id, order_id, quantity)values(1, 3, 2);
+insert into order_items (item_id, order_id, quantity)values(8, 3, 2);
 
-insert into order_items (item_id, order_id, quantity)values(1, 1, 4);
+insert into order_items (item_id, order_id, quantity)values(9, 1, 4);
 
-insert into order_items (item_id, order_id, quantity)values(1, 3, 3);
+insert into order_items (item_id, order_id, quantity)values(10, 3, 3);
 
-/*create table stock(
-    stock_number number not null,
+create table stock(
+    stock_id number primary key,
     book_id number not null,
-    quantity number 
-);*/
+    quantity number  
+);
+
+insert into stock (stock_id, book_id, quantity) values(1,1,100);
+
+insert into stock (stock_id, book_id, quantity) values(2,2,100);
+
+insert into stock (stock_id, book_id, quantity) values(3,3,100);
+
+insert into stock (stock_id, book_id, quantity) values(4,4,100);
+
+insert into stock (stock_id, book_id, quantity) values(5,5,100);
+
+insert into stock (stock_id, book_id, quantity) values(6,6,100);
+
+insert into stock (stock_id, book_id, quantity) values(7,7,100);
+
+insert into stock (stock_id, book_id, quantity) values(8,8,100);
+
+insert into stock (stock_id, book_id, quantity) values(9,9,100);
+
+insert into stock (stock_id, book_id, quantity) values(10,10,100);
 
 select * from books;
+
 select * from orders;
+
 select * from order_items;
+
+select * from stock; 
+
+select book_id, ((select quantity from stock where book_id = b.book_id)-(select sum(quantity) from order_items where item_id = b.book_id )) as remaining_stock from books b;
