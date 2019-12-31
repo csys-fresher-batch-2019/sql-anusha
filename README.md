@@ -5,7 +5,7 @@
 ## Features
 
 * Users should be able to view all the departments in the hospital.
-* users can view their own details. 
+* Users can view their own details. 
 
 ### Feature 1: List departments and doctors
 ```sql
