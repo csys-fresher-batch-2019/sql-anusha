@@ -13,6 +13,13 @@ create table doctors(
   foreign key (department_id) references departments(department_id) ,
   constraint doc_name_uq unique (doc_name)
   );
+  
+create table patient(
+    patient_id number primary key,
+    patient_name varchar2(50) not null,
+    address varchar2(150)not null,
+    phone_number number not null
+);
 
 insert into departments (department_id,department_name)values (1,'car');
 
@@ -26,8 +33,10 @@ insert into departments (department_id,department_name)values (5,'ent');
 
 insert into departments (department_id,department_name)values (6,'gy');
  
-select * from departments;
-
 insert into doctors (employee_id,doc_name,department_id) values(1,'a',1);
+
+insert into patient () values ();
+ 
+select * from departments;
 
 select * from doctors;
