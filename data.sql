@@ -32,15 +32,15 @@ create table patient(
 );
 
 create table lab(
-    lab_no number,
+    lab_no number primary key,
     patient_id number,
-    weight number,
     doctor_id number,
     entry_date date,
-    patient_type varchar2(5),
     amount number,
     result_date date,
-    results varchar2(5000)
+    results varchar2(5000),
+    foreign key (patient_id) references patient(patient_id),
+    foreign key (doctor_id) references doctors(doctor_id)
 );
 
 insert into departments (department_id,department_name)values (1,'Cardiology');
@@ -94,6 +94,8 @@ insert into patient (patient_id, patient_name, age, weight, address, phone_numbe
 insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (9, 'r', 98, 70, 'c84b5u8 bg45u', 3847567867, 'F', 'COMMON COLD', 1, 'OUT');
 
 insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (10, 'q', 45, 68, 'h8t2c45 ucbutg2i', 0834564657, 'M', 'ATHEROSCLEROSIS', 2, 'IN');
+ 
+insert into lab (lab_no, patient_id, weight, doctor_id, entry_date, patient_type, amount, result_date, results) values ()
  
 select * from departments;
 
