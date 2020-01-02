@@ -169,7 +169,7 @@ insert into rooms (room_id,nurse_id, patient_id) values (4,4,10);
 
 insert into bills (bill_no, patient_id, total_amount, amount_paid) values (1,1,3234,543);
 
-update bills set pending_amount
+update bills set pending_amount=total_amount-amount_paid;
 
 select * from departments;
 
