@@ -42,7 +42,7 @@ create table appointment(
     purpose varchar2(50) not null,
     doctor_id number not null,
     s_time timestamp default sysdate not null,
-    e_time timestamp default sysdate +0.0140 
+    e_time timestamp default sysdate +0.0140 --@0mins appointment
 );
 
 create table lab(
