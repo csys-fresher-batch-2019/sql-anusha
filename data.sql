@@ -42,7 +42,7 @@ create table appointment(
     purpose varchar2(50) not null,
     doctor_id number not null,
     s_time timestamp default sysdate not null,
-    e_time timestamp default sysdate +0.0140 --@0mins appointment
+    e_time timestamp default sysdate +0.0140 
 );
 
 create table lab(
@@ -67,12 +67,14 @@ create table rooms(
 );
 
 create table bills(
-    bill_no number,
-    patient_id number,
-    total_amount number,
+    bill_no number primary key,
+    patient_id number not null,
+    total_amount number not null,
+    amount_paid number,
     pending_amount number,
-    bill_date date,
-    insurance number
+    bill_date date default sysdate not null,
+    insurance number,
+    foreign key (patient_id) references patient(patient_id)
 );
 
 insert into departments (department_id,department_name)values (1,'Cardiology');
@@ -146,7 +148,29 @@ insert into lab (lab_no, patient_id, amount, result_date, results) values (2, 3,
 insert into lab (lab_no, patient_id, amount, result_date, results) values (3, 5, 420, to_date('30/12/2019','dd/MM/yyyy'), 'csvcx');
 
 insert into lab (lab_no, patient_id, amount, result_date, results) values (4, 2, 99, to_date('28/12/2019','dd/MM/yyyy'), 'jgddddd');
- 
+
+insert into nurse (nurse_id, nurse_name) values (1, 'q');
+
+insert into nurse (nurse_id, nurse_name) values (2, 'w');
+
+insert into nurse (nurse_id, nurse_name) values (3, 'e');
+
+insert into nurse (nurse_id, nurse_name) values (4, 'r');
+
+insert into nurse (nurse_id, nurse_name) values (5, 't');
+
+insert into rooms (room_id,nurse_id, patient_id) values (1,1,1);
+
+insert into rooms (room_id,nurse_id, patient_id) values (2,2,4);
+
+insert into rooms (room_id,nurse_id, patient_id) values (3,3,5);
+
+insert into rooms (room_id,nurse_id, patient_id) values (4,4,10);
+
+insert into bills (bill_no, patient_id, total_amount, amount_paid) values (1,1,3234,543);
+
+update bills set pending_amount
+
 select * from departments;
 
 select * from doctors;
@@ -156,3 +180,9 @@ select * from patient;
 select * from lab;
 
 select * from appointment;
+
+select * from nurse;
+
+select * from rooms;
+
+select * from bills;
