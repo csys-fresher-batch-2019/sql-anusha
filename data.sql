@@ -26,6 +26,7 @@ create table patient(
     phone_number number not null,
     disease varchar2(50),
     doctor_id number not null,
+    entry_date date default SYSDATE,
     patient_type varchar2(5) not null,
     constraint gender_ck check(gender in ('M','F')),
     constraint patient_type_ck check(patient_type in ('IN','OUT'))
@@ -34,13 +35,10 @@ create table patient(
 create table lab(
     lab_no number primary key,
     patient_id number,
-    doctor_id number,
-    entry_date date,
     amount number,
     result_date date,
     results varchar2(5000),
-    foreign key (patient_id) references patient(patient_id),
-    foreign key (doctor_id) references doctors(doctor_id)
+    foreign key (patient_id) references patient(patient_id)
 );
 
 insert into departments (department_id,department_name)values (1,'Cardiology');
@@ -75,27 +73,37 @@ insert into doctors (doctor_id,doctor_name,department_id) values(9,'i',4);
 
 insert into doctors (doctor_id,doctor_name,department_id) values(10,'j',1);
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (1, 'z', 34, 54, 'jksg12yu', 9182656261,  'F', 'ALLERGY', 4, 'IN');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (1, 'z', 34, 54, 'jksg12yu', 9182656261,  'F', 'ALLERGY', 4, 'IN', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (2, 'y', 27, 75, 'nfbh ruyf7', 3648573489, 'M', 'GENERAL CHECK-UP', 9, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (2, 'y', 27, 75, 'nfbh ruyf7', 3648573489, 'M', 'GENERAL CHECK-UP', 9, 'OUT', to_date('02/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (3, 'x', 10, 38, 'jkrh wguitj4hh', 2768756868, 'M', 'TOOTH ACHE', 6, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (3, 'x', 10, 38, 'jkrh wguitj4hh', 2768756868, 'M', 'TOOTH ACHE', 6, 'OUT', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (4, 'w', 03, 10, 'jehtu irgfuruih', 9858876451, 'M', 'FEVER', 8, 'IN');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (4, 'w', 03, 10, 'jehtu irgfuruih', 9858876451, 'M', 'FEVER', 8, 'IN', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (5, 'v', 60, 79, 'h8945ty7 845yhgui45hv', 9754873675, 'M', 'CARDIAC ARREST', 10, 'IN');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (5, 'v', 60, 79, 'h8945ty7 845yhgui45hv', 9754873675, 'M', 'CARDIAC ARREST', 10, 'IN', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (6, 'u', 19, 44, 'uc4t78 4gjkbtc85', 0823697765, 'F', 'HEAD ACHE', 3, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (6, 'u', 19, 44, 'uc4t78 4gjkbtc85', 0823697765, 'F', 'HEAD ACHE', 3, 'OUT', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (7, 't', 33, 77, 'hx43gr7 cg34ug', 9768854783, 'F', 'CAVITY', 6, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (7, 't', 33, 77, 'hx43gr7 cg34ug', 9768854783, 'F', 'CAVITY', 6, 'OUT', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (8, 's', 22, 55, '4837ucb', 6756478657, 'M', 'HEARING LOSS', 5, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (8, 's', 22, 55, '4837ucb', 6756478657, 'M', 'HEARING LOSS', 5, 'OUT', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (9, 'r', 98, 70, 'c84b5u8 bg45u', 3847567867, 'F', 'COMMON COLD', 1, 'OUT');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (9, 'r', 98, 70, 'c84b5u8 bg45u', 3847567867, 'F', 'COMMON COLD', 1, 'OUT', to_date('01/01/2020','dd/MM/yyyy'));
 
-insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type) values (10, 'q', 45, 68, 'h8t2c45 ucbutg2i', 0834564657, 'M', 'ATHEROSCLEROSIS', 2, 'IN');
+insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
+values (10, 'q', 45, 68, 'h8t2c45 ucbutg2i', 0834564657, 'M', 'ATHEROSCLEROSIS', 2, 'IN', to_date('01/01/2020','dd/MM/yyyy'));
  
-insert into lab (lab_no, patient_id, weight, doctor_id, entry_date, patient_type, amount, result_date, results) values ()
+insert into lab (lab_no, patient_id, amount, result_date, results) values (1,1,90,to_date('02/01/2020','dd/MM/yyyy'),'rtdfghfyutgyug');
  
 select * from departments;
 
