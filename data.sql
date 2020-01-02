@@ -16,8 +16,10 @@ create table doctors(
   doctor_id number primary key,
   doctor_name varchar2(50) not null,
   department_id number not null,
+  d_position varchar2(50) default 'DOCTOR' not null, 
   foreign key (department_id) references departments(department_id) ,
-  constraint doc_name_uq unique (doctor_name)
+  constraint doc_name_uq unique (doctor_name),
+  constraint d_position_ck check (d_position in ('DOCTOR', 'HEAD OF DEPARTMENT'))
   );
   
 create table patient(
@@ -54,9 +56,11 @@ create table lab(
     foreign key (patient_id) references patient(patient_id)
 );
 
-create table nurse(
+create table nurse_t(
     nurse_id number primary key,
-    nurse_name varchar2(50) not null
+    nurse_name varchar2(50) not null,
+    n_position varchar2(25) default 'NURSE' not null
+    constraint n_position_ck check (n_position in ('NURSE', 'HEAD OF DEPARTMENT'))
 );
 
 create table rooms(
@@ -89,21 +93,21 @@ insert into departments (department_id,department_name)values (5,'ENT');
 
 insert into departments (department_id,department_name)values (6,'Dental');
  
-insert into doctors (doctor_id,doctor_name,department_id) values(1,'a',4);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(1,'a',4, 'HEAD OF DEPARTMENT');
 
-insert into doctors (doctor_id,doctor_name,department_id) values(2,'b',1);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(2,'b',1, 'HEAD OF DEPARTMENT');
 
 insert into doctors (doctor_id,doctor_name,department_id) values(3,'c',4);
 
-insert into doctors (doctor_id,doctor_name,department_id) values(4,'d',2);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(4,'d',2, 'HEAD OF DEPARTMENT');
 
-insert into doctors (doctor_id,doctor_name,department_id) values(5,'e',5);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(5,'e',5, 'HEAD OF DEPARTMENT');
 
-insert into doctors (doctor_id,doctor_name,department_id) values(6,'f',6);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(6,'f',6, 'HEAD OF DEPARTMENT');
 
 insert into doctors (doctor_id,doctor_name,department_id) values(7,'g',6);
 
-insert into doctors (doctor_id,doctor_name,department_id) values(8,'h',3);
+insert into doctors (doctor_id,doctor_name,department_id,d_position) values(8,'h',3, 'HEAD OF DEPARTMENT');
 
 insert into doctors (doctor_id,doctor_name,department_id) values(9,'i',4);
 
@@ -149,15 +153,15 @@ insert into lab (lab_no, patient_id, amount, result_date, results) values (3, 5,
 
 insert into lab (lab_no, patient_id, amount, result_date, results) values (4, 2, 99, to_date('28/12/2019','dd/MM/yyyy'), 'jgddddd');
 
-insert into nurse (nurse_id, nurse_name) values (1, 'q');
+insert into nurse_t (nurse_id, nurse_name,n_position) values (1, 'q', 'HEAD OF DEPARTMENT');
 
-insert into nurse (nurse_id, nurse_name) values (2, 'w');
+insert into nurse_t (nurse_id, nurse_name) values (2, 'w');
 
-insert into nurse (nurse_id, nurse_name) values (3, 'e');
+insert into nurse_t (nurse_id, nurse_name) values (3, 'e');
 
-insert into nurse (nurse_id, nurse_name) values (4, 'r');
+insert into nurse_t (nurse_id, nurse_name) values (4, 'r');
 
-insert into nurse (nurse_id, nurse_name) values (5, 't');
+insert into nurse_t (nurse_id, nurse_name) values (5, 't');
 
 insert into rooms (room_id,nurse_id, patient_id) values (1,1,1);
 
@@ -186,3 +190,9 @@ select * from nurse;
 select * from rooms;
 
 select * from bills;
+
+--Query to find head of each department 
+
+select * from doctors where d_position = 'HEAD OF DEPARTMENT'
+
+--Query to find head of each department 
