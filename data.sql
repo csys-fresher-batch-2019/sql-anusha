@@ -32,6 +32,15 @@ create table patient(
     constraint patient_type_ck check(patient_type in ('IN','OUT'))
 );
 
+create table appointment(
+    appointment_id number primary key,
+    patient_id number,
+    purpose varchar2(50),
+    doctor_id number,
+    s_time timestamp,
+    e_time timestamp
+);
+
 create table lab(
     lab_no number primary key,
     patient_id number,
@@ -39,6 +48,27 @@ create table lab(
     result_date date,
     results varchar2(5000),
     foreign key (patient_id) references patient(patient_id)
+);
+
+create table nurse(
+    nurse_id number primary key,
+    nurse_name varchar2(50)
+);
+
+create table rooms(
+    room_id number primary key,
+    nurse_id number not null,
+    patient_id number,--need not b not null
+    foreign key (patient_id) references patient(patient_id)
+);
+
+create table bills(
+    bill_no number,
+    patient_id number,
+    total_amount number,
+    pending_amount number,
+    bill_date date,
+    insurance number
 );
 
 insert into departments (department_id,department_name)values (1,'Cardiology');
@@ -103,7 +133,13 @@ values (9, 'r', 98, 70, 'c84b5u8 bg45u', 3847567867, 'F', 'COMMON COLD', 1, 'OUT
 insert into patient (patient_id, patient_name, age, weight, address, phone_number, gender, disease, doctor_id, patient_type, entry_date) 
 values (10, 'q', 45, 68, 'h8t2c45 ucbutg2i', 0834564657, 'M', 'ATHEROSCLEROSIS', 2, 'IN', to_date('01/01/2020','dd/MM/yyyy'));
  
-insert into lab (lab_no, patient_id, amount, result_date, results) values (1,1,90,to_date('02/01/2020','dd/MM/yyyy'),'rtdfghfyutgyug');
+insert into lab (lab_no, patient_id, amount, result_date, results) values (1,1,90,to_date('02/01/2020','dd/MM/yyyy'),'fdtyfh');
+
+insert into lab (lab_no, patient_id, amount, result_date, results) values (2,3,150,to_date('01/01/2020','dd/MM/yyyy'),'mjgjfyu');
+
+insert into lab (lab_no, patient_id, amount, result_date, results) values (3,5,420,to_date('30/12/2019','dd/MM/yyyy'),'csvcx');
+
+insert into lab (lab_no, patient_id, amount, result_date, results) values (4,2,99,to_date('28/12/2019','dd/MM/yyyy'),'jgddddd');
  
 select * from departments;
 
