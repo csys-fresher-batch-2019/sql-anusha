@@ -111,35 +111,35 @@ select * from bills;
 ```sql
 select * from doctors where d_position = 'HEAD OF DEPARTMENT';
 ```
-### Feature 7:
+### Feature 7: Head nurse
 ```sql
 select * from nurse_t where n_position = 'HEAD OF DEPARTMENT';
 ```
-### Feature 8:
+### Feature 8: Patient who fixed an appointment
 ```sql
 select p.patient_name from patient p join appointment a on p.patient_id = a.patient_id; 
 ```
-### Feature 9:
+### Feature 9: Available Rooms
 ```sql
 select count(*) from rooms where patient_id is null;
 ```
-### Feature 10:
+### Feature 10: Doctors and their departments 
 ```sql
 select d.doctor_name, s.department_name from doctors d join departments s on d.department_id = s.department_id;
 ```
-### Feature 11:
+### Feature 11: Doctors of department ID 4
 ```sql
 select doctor_name from doctors where department_id = 4;
 ```
-### Feature 12:
+### Feature 12: Patient and their Doctor
 ```sql
 select p.patient_name, d.doctor_name from patient p join doctors d on p.doctor_id = d.doctor_id;
 ```
-### Feature 13:
+### Feature 13: Room of a Patient
 ```sql
 select p.patient_name ,r.room_id from patient p join rooms r on p.patient_id =r.patient_id;
 ```
-### Feature 14:
+### Feature 14: Payment detail of patient id 3
 ```sql
 select * from bills where patient_id=3;
 ```
