@@ -50,3 +50,18 @@ Query:
 ```sql
   select * from patient;
 ```
+### Feature 3: Fix appointment
+```sql
+create table appointment(
+    appointment_id number primary key,
+    patient_id number not null,
+    purpose varchar2(50) not null,
+    doctor_id number not null,
+    s_time timestamp default sysdate not null,
+    e_time timestamp default sysdate +0.0140 
+);
+```
+Query:
+```sql
+select * from appointment;
+```
