@@ -50,7 +50,7 @@ Query:
 ```sql
   select * from patient;
 ```
-### Feature 3: Fix appointment
+### Feature 3: Fix Appointment
 ```sql
 create table appointment(
     appointment_id number primary key,
@@ -65,3 +65,62 @@ Query:
 ```sql
 select * from appointment;
 ```
+### Feature 4: Room Details
+```sql
+create table lab_t(
+    lab_no number primary key,
+    patient_id number not null,
+    amount number not null,
+    result_date date not null,
+    results varchar2(5000) not null,
+    foreign key (patient_id) references patient(patient_id)
+);
+
+create table nurse_t(
+    nurse_id number primary key,
+    nurse_name varchar2(50) not null,
+    n_position varchar2(25) default 'NURSE' not null
+    constraint n_position_ck check (n_position in ('NURSE', 'HEAD OF DEPARTMENT'))
+);
+```
+Query:
+```sql
+select * from nurse_t;
+
+select * from rooms;
+```
+### Feature 5: Payments
+```sql
+create table bills(
+    bill_no number primary key,
+    patient_id number not null,
+    total_amount number not null,
+    amount_paid number,
+    pending_amount number,
+    bill_date date default sysdate not null,
+    status varchar2(10)default 'UNPAID' not null,
+    foreign key (patient_id) references patient(patient_id),
+    constraint status_ck check (status in ('PAID','UNPAID'))
+);
+```
+Query :
+```sql
+select * from bills;
+```
+### Feature 6: Head of Department
+```sql
+select * from doctors where d_position = 'HEAD OF DEPARTMENT';
+```
+select * from nurse_t where n_position = 'HEAD OF DEPARTMENT';
+
+select p.patient_name from patient p join appointment a on p.patient_id = a.patient_id; 
+
+select count(*) from rooms where patient_id is null;
+
+select d.doctor_name, s.department_name from doctors d join departments s on d.department_id = s.department_id;
+
+select doctor_name from doctors where department_id = 4;
+select p.patient_name, d.doctor_name from patient p join doctors d on p.doctor_id = d.doctor_id;
+select p.patient_name ,r.room_id from patient p join rooms r on p.patient_id =r.patient_id;
+select * from bills where patient_id=3;
+
