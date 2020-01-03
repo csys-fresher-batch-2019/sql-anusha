@@ -50,6 +50,7 @@ Query:
 ```sql
   select * from patient;
 ```
+
 ### Feature 3: Fix Appointment
 ```sql
 create table appointment(
