@@ -13,18 +13,18 @@
 
 ## Table 2 : Doctors
 
-| DOCTOR_ID | DOCTOR_NAME | DEPARTMENT_ID |
-|-----------|-------------|---------------|
-| 1         | a           | 4             |
-| 2         | b           | 1             |
-| 3         | c           | 4             |
-| 4         | d           | 2             |
-| 5         | e           | 5             |
-| 6         | f           | 6             |
-| 7         | g           | 6             |
-| 8         | h           | 3             |
-| 9         | i           | 4             |
-| 10        | j           | 1             |
+| DOCTOR_ID | DOCTOR_NAME | DEPARTMENT_ID | D_POSITION         |
+|-----------|-------------|---------------|--------------------|
+| 1         | a           | 4             | HEAD OF DEPARTMENT |
+| 2         | b           | 1             | HEAD OF DEPARTMENT |
+| 3         | c           | 4             | DOCTOR             |
+| 4         | d           | 2             | HEAD OF DEPARTMENT |
+| 5         | e           | 5             | HEAD OF DEPARTMENT |
+| 6         | f           | 6             | HEAD OF DEPARTMENT |
+| 7         | g           | 6             | DOCTOR             |
+| 8         | h           | 3             | HEAD OF DEPARTMENT |
+| 9         | i           | 4             | DOCTOR             |
+| 10        | j           | 1             | DOCTOR             |
 
 ## Table 3 : Patient
 | PATIENT_ID | PATIENT_NAME | AGE | WEIGHT | GENDER | ADDRESS               | PHONE_NUMBER | DISEASE          | DOCTOR_ID | ENTRY_DATE | PATIENT_TYPE |
@@ -41,6 +41,11 @@
 | 10         | q            | 45  | 68     | M      | h8t2c45 ucbutg2i      | 834564657    | ATHEROSCLEROSIS  | 2         | 01-JAN-20  | IN           |
 
 ## Table 4 : Appointment
+|APPOINTMENT_ID|	PATIENT_ID	|PURPOSE	DOCTOR_ID|	S_TIME	                    |           E_TIME           |
+|--------------|--------------|------------------|------------------------------|----------------------------|
+|1	           |2	            | hefbj	 9	       | 03-JAN-20 02.39.17.000000 AM	|03-JAN-20 02.59.27.000000 AM|
+|2	           |3	            | hefbj	 6	       | 03-JAN-20 02.39.17.000000 AM	|03-JAN-20 02.59.27.000000 AM|
+
 ## Table 5 : Lab
 ## Table 6 : Nurse
 ## Table 7 : Rooms
