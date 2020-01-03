@@ -47,6 +47,22 @@
 |2	           |3	            | hefbj	 6	       | 03-JAN-20 02.39.17.000000 AM	|03-JAN-20 02.59.27.000000 AM|
 
 ## Table 5 : Lab
+
+| LAB_NO | PATIENT_ID | AMOUNT | RESULT_DATE | RESULTS |
+|--------|------------|--------|-------------|---------|
+| 1      | 1          | 90     | 02-JAN-20   | fdtyfh  |
+| 2      | 3          | 150    | 01-JAN-20   | mjgjfyu |
+| 3      | 5          | 420    | 30-DEC-19   | csvcx   |
+| 4      | 2          | 99     | 28-DEC-19   | jgddddd |
+
 ## Table 6 : Nurse
+
+|NURSE_ID	|NURSE_NAME	|N_POSITION        |
+|---------|-----------|------------------|
+|1	      |q	        |HEAD OF DEPARTMENT|
+|2        |w          |NURSE             |
+|3	      |e	        |NURSE             |
+|4	      |r	        |NURSE             |
+|5	      |t	        |NURSE             |
 ## Table 7 : Rooms
 ## Table 8 : Bills
