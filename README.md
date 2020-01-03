@@ -111,16 +111,27 @@ select * from bills;
 ```sql
 select * from doctors where d_position = 'HEAD OF DEPARTMENT';
 ```
+```sql
 select * from nurse_t where n_position = 'HEAD OF DEPARTMENT';
-
+```
+```sql
 select p.patient_name from patient p join appointment a on p.patient_id = a.patient_id; 
-
+```
+```sql
 select count(*) from rooms where patient_id is null;
-
+```
+```sql
 select d.doctor_name, s.department_name from doctors d join departments s on d.department_id = s.department_id;
-
+```
+```sql
 select doctor_name from doctors where department_id = 4;
+```
+```sql
 select p.patient_name, d.doctor_name from patient p join doctors d on p.doctor_id = d.doctor_id;
+```
+```sql
 select p.patient_name ,r.room_id from patient p join rooms r on p.patient_id =r.patient_id;
+```
+```sql
 select * from bills where patient_id=3;
-
+```
