@@ -197,6 +197,10 @@ create table bills(
     foreign key (patient_id) references patient(patient_id),
     constraint status_ck check (status in ('PAID','UNPAID'))
 );
+
+update bills set pending_amount=total_amount-amount_paid;
+update bills set status ='PAID' where total_amount=amount_paid;
+
 ```
 Query :
 ```sql
