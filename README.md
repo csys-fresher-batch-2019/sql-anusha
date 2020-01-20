@@ -14,6 +14,7 @@ create table departments(
   department_name varchar2(50) not null,
   constraint department_name_uq unique (department_name)
   );
+create sequence department_id_sq start with 1 increment by 1;
   
 create table doctors(
   employee_id number primary key,
