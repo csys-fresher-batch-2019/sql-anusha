@@ -11,6 +11,7 @@ create table departments(
   department_name varchar2(50) not null,
   constraint department_name_uq unique (department_name)
   );
+create sequence department_id_sq start with 1 increment by 1;
   
 create table doctors(
   doctor_id number primary key,
@@ -81,17 +82,17 @@ create table bills(
     foreign key (patient_id) references patient(patient_id)
 );
 
-insert into departments (department_id,department_name)values (1,'Cardiology');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'Cardiology');
 
-insert into departments (department_id,department_name)values (2,'Dermatology');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'Dermatology');
 
-insert into departments (department_id,department_name)values (3,'Pediatrician');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'Pediatrician');
 
-insert into departments (department_id,department_name)values (4,'General Medicine');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'General Medicine');
 
-insert into departments (department_id,department_name)values (5,'ENT');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'ENT');
 
-insert into departments (department_id,department_name)values (6,'Dental');
+insert into departments (department_id,department_name)values (department_id_sq.nextval,'Dental');
  
 insert into doctors (doctor_id,doctor_name,department_id,d_position) values(1,'a',4, 'HEAD OF DEPARTMENT');
 
