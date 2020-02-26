@@ -12,17 +12,27 @@
 create table departments(
   department_id number primary key,
   department_name varchar2(50) not null,
+  active_departments number default 1,
   constraint department_name_uq unique (department_name)
   );
-create sequence department_id_sq start with 1 increment by 1;
+  create sequence department_id_sq start with 1 increment by 1;
   
-create table doctors(
-  employee_id number primary key,
-  doc_name varchar2(50) not null,
-  department_id number not null,
-  foreign key (department_id) references departments(department_id) ,
-   constraint doc_name_uq unique (doc_name)
+  create table doctors(
+    doctor_id number primary key,
+    doctor_name varchar2(50) not null,
+    department_id number not null, 
+    doctor_password varchar2(15) not null,
+    active_doctors number default 1,
+    doctor_presence number default 1,
+    d_phone_number varchar2(10) not null,
+    d_gender char not null,
+    no_of_appointments number default 0,
+    constraint d_gender_ck check(d_gender in ('M','F')),
+    constraint phone_number_uq unique (d_phone_number),
+    foreign key (department_id) references departments(department_id) 
   );
+  create sequence doctor_id_sq start with 1 increment by 1;
+
 ``` 
 Query:
 ```sql
@@ -32,29 +42,28 @@ Query:
 
 ## Table 1 : Departments
 
-| DEPARTMENT_ID | DEPARTMENT_NAME  |
-|---------------|------------------|
-| 1             | Cardiology       |
-| 2             | Dermatology      |
-| 3             | Pediatrician     |
-| 4             | General Medicine |
-| 5             | ENT              |
-| 6             | Dental           |
+| 1  | Cardiology       | 1 |
+|----|------------------|---|
+| 2  | Dermatology      | 1 |
+| 3  | Pediatrician     | 1 |
+| 4  | General Medicine | 1 |
+| 5  | ENT              | 1 |
+| 6  | Dental           | 1 |
+| 7  | Neurology        | 1 |
+| 21 | Opthalmology     | 1 |
 
 ## Table 2 : Doctors
 
-| DOCTOR_ID | DOCTOR_NAME | DEPARTMENT_ID | D_POSITION         |
-|-----------|-------------|---------------|--------------------|
-| 1         | a           | 4             | HEAD OF DEPARTMENT |
-| 2         | b           | 1             | HEAD OF DEPARTMENT |
-| 3         | c           | 4             | DOCTOR             |
-| 4         | d           | 2             | HEAD OF DEPARTMENT |
-| 5         | e           | 5             | HEAD OF DEPARTMENT |
-| 6         | f           | 6             | HEAD OF DEPARTMENT |
-| 7         | g           | 6             | DOCTOR             |
-| 8         | h           | 3             | HEAD OF DEPARTMENT |
-| 9         | i           | 4             | DOCTOR             |
-| 10        | j           | 1             | DOCTOR             |
+| Doctor Id | Doctor Name | Department Id | Doctor Password | Active Status | Doctor Presence | Phone Number | Gender | No of Appointments |
+|:---------:|:-----------:|:-------------:|:---------------:|:-------------:|:---------------:|:------------:|:------:|:------------------:|
+|     1     |    Sruthi   |       1       |       123       |       0       |        1        |  9876543210  |    F   |          0         |
+|     21    |    Megala   |       2       |       123       |       1       |        1        |  8765432109  |    F   |          2         |
+|     41    |   Swaathi   |       3       |       123       |       1       |        1        |  7654321098  |    F   |          0         |
+|     81    |    Aakash   |       4       |       123       |       1       |        1        |  6543210987  |    F   |          2         |
+|     82    |     Bavi    |       5       |       123       |       1       |        1        |  9999999999  |    F   |          0         |
+|     83    |   Krithika  |       6       |       123       |       1       |        1        |  8888888888  |    F   |          0         |
+|     84    |    Meera    |       7       |       123       |       1       |        1        |  7777777777  |    F   |          0         |
+|     85    |   Dharsini  |       1       |       123       |       1       |        1        |  6666666666  |    F   |          0         |
 
 ### Feature 2: Patient Details
 ```sql
